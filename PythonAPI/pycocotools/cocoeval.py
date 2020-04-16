@@ -455,6 +455,7 @@ class COCOeval:
                 mean_s = np.mean(s[s>-1])
             print(iStr.format(titleStr, typeStr, iouStr, areaRng, maxDets, mean_s))
             return mean_s
+            
         def _summarizeDets():
             # stats = np.zeros((12,))
             # stats[0] = _summarize(1)
