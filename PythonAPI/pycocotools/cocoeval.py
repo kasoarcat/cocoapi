@@ -130,7 +130,7 @@ class COCOeval:
         if not p.useSegm is None:
             p.iouType = 'segm' if p.useSegm == 1 else 'bbox'
             print('useSegm (deprecated) is not None. Running {} evaluation'.format(p.iouType))
-        print('Evaluate annotation type *{}*'.format(p.iouType))
+        # print('Evaluate annotation type *{}*'.format(p.iouType))
         p.imgIds = list(np.unique(p.imgIds))
         if p.useCats:
             p.catIds = list(np.unique(p.catIds))
@@ -158,7 +158,7 @@ class COCOeval:
              ]
         self._paramsEval = copy.deepcopy(self.params)
         toc = time.time()
-        print('DONE (t={:0.2f}s).'.format(toc-tic))
+        # print('DONE (t={:0.2f}s).'.format(toc-tic))
 
     def computeIoU(self, imgId, catId):
         p = self.params
@@ -318,7 +318,7 @@ class COCOeval:
         :param p: input params for evaluation
         :return: None
         '''
-        print('Accumulating evaluation results...')
+        # print('Accumulating evaluation results...')
         tic = time.time()
         if not self.evalImgs:
             print('Please run evaluate() first')
@@ -456,9 +456,9 @@ class COCOeval:
             print(iStr.format(titleStr, typeStr, iouStr, areaRng, maxDets, mean_s))
             return mean_s
         def _summarizeDets():
-            stats = np.zeros((12,))
+            # stats = np.zeros((12,))
             # stats[0] = _summarize(1)
-            stats[1] = _summarize(1, iouThr=.5, maxDets=self.params.maxDets[2])
+            # stats[1] = _summarize(1, iouThr=.5, maxDets=self.params.maxDets[2])
             # stats[2] = _summarize(1, iouThr=.75, maxDets=self.params.maxDets[2])
             # stats[3] = _summarize(1, areaRng='small', maxDets=self.params.maxDets[2])
             # stats[4] = _summarize(1, areaRng='medium', maxDets=self.params.maxDets[2])
@@ -469,7 +469,8 @@ class COCOeval:
             # stats[9] = _summarize(0, areaRng='small', maxDets=self.params.maxDets[2])
             # stats[10] = _summarize(0, areaRng='medium', maxDets=self.params.maxDets[2])
             # stats[11] = _summarize(0, areaRng='large', maxDets=self.params.maxDets[2])
-            return stats
+            # return stats
+            return _summarize(1, iouThr=.5, maxDets=self.params.maxDets[2])
             
         def _summarizeKps():
             stats = np.zeros((10,))
