@@ -7,7 +7,7 @@ import platform
 
 extra_compile_args = ''
 if platform.system() == 'Windows':
-    extra_compile_args = ['-Wno-cpp']
+    extra_compile_args = ['-std=c99']
 else:
     extra_compile_args = ['-Wno-cpp', '-Wno-unused-function', '-std=c99']
 
